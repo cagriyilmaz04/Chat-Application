@@ -1,6 +1,7 @@
 package com.example.chatapplication.presentation
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -21,13 +22,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.example.chatapplication.auth.FirebaseAuthResult
+import com.example.chatapplication.auth.createUser
 import com.example.chatapplication.navigation.Screen
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 @Composable
 fun LogInScreen(navController: NavController) {
+
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-
+    var auth = Firebase.auth
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
             OutlinedTextField(
@@ -46,12 +54,10 @@ fun LogInScreen(navController: NavController) {
             )
             val context = LocalContext.current
             Button(
-
                 onClick = {
-                          if(checkCondition(username,password,context)){
+                    if(checkCondition(username,password,context)){
 
-                          }
-
+                    }
                 },
                 modifier = Modifier.fillMaxWidth(0.8f).height(50.dp)
             ) {
@@ -63,6 +69,8 @@ fun LogInScreen(navController: NavController) {
     }
 }
 
+
+
 fun checkCondition(username: String, password: String,context:Context): Boolean {
     if(username.isEmpty()||password.isEmpty()){
         Toast.makeText(context,"Boş yerleri doldurunuz",Toast.LENGTH_LONG).show()
@@ -70,6 +78,8 @@ fun checkCondition(username: String, password: String,context:Context): Boolean 
     }
     return true
 }
+
+
 
 
 @Preview(showBackground = true)
