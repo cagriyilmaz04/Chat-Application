@@ -1,9 +1,12 @@
-package com.example.chatapplication
+package com.example.chatapplication.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.chatapplication.presentation.LogInScreen
+import com.example.chatapplication.presentation.RegisterScreen
+import com.example.chatapplication.presentation.SplashScreen
 
 @Composable
 fun SetupNavGraph(navController:NavHostController){
@@ -16,7 +19,7 @@ fun SetupNavGraph(navController:NavHostController){
             LogInScreen(navController)
         }
         composable(route= Screen.Register.route){
-            RegisterScreen()
+            RegisterScreen(navController)
         }
     }
 }

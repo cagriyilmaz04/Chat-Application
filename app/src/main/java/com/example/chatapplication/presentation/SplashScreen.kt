@@ -1,4 +1,4 @@
-package com.example.chatapplication
+package com.example.chatapplication.presentation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -9,6 +9,8 @@ import androidx.navigation.NavController
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.example.chatapplication.R
+import com.example.chatapplication.navigation.Screen
 import kotlinx.coroutines.delay
 
 @Composable
