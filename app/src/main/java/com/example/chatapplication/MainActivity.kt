@@ -40,7 +40,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     ChatApplicationTheme {
-        SetupNavGraph(rememberNavController())
-
+        SetupNavGraph(navController = rememberNavController())
     }
 }
