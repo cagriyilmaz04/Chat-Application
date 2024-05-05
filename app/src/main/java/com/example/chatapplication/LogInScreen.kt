@@ -1,5 +1,6 @@
 package com.example.chatapplication
 
+import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -47,7 +48,12 @@ fun LogInScreen(navController: NavController) {
             val context = LocalContext.current
             Button(
 
-                onClick = { Toast.makeText(context,"Burası",Toast.LENGTH_LONG).show() },
+                onClick = {
+                          if(checkCondition(username,password,context)){
+
+                          }
+
+                },
                 modifier = Modifier.fillMaxWidth(0.8f).height(50.dp)
             ) {
                 Text("Giriş Yap")
@@ -55,6 +61,14 @@ fun LogInScreen(navController: NavController) {
             Text("Kaydınız yok mu? Şimdi kaydolun!", modifier = Modifier.clickable { navController.navigate(Screen.Register.route) })
         }
     }
+}
+
+fun checkCondition(username: String, password: String,context:Context): Boolean {
+    if(username.isEmpty()||password.isEmpty()){
+        Toast.makeText(context,"Boş yerleri doldurunuz",Toast.LENGTH_LONG).show()
+        return false
+    }
+    return true
 }
 
 
